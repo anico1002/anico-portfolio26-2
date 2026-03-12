@@ -1,0 +1,28 @@
+name: GM World!
+subtitle: Brand identity for a global forum at the frontier of Web3, AI, and the Metaverse
+client: Metacampus
+category: Brand Identity & Web
+year: 2024
+role: Senior Designer
+deliverables: Brand Identity, Visual System, Corporate Assets, Digital Templates
+tags: Branding, Web3, Art Direction
+aspect_ratio: 16/9
+order: 3
+
+[overview]
+GM World! is the annual global forum organised by Metacampus, a Web3 education company, bringing together industry leaders, creators, and innovators around the themes of artificial intelligence, the Metaverse, and decentralised technology. In 2024 I developed the full brand identity and visual assets for the forum, creating a system flexible enough to evolve with each edition while maintaining a consistent core identity.
+
+[challenge]
+The forum is international by design, each edition takes place in a different host city, with a different cultural context. The brand needed to be globally neutral enough to work anywhere, while also adaptable enough to absorb local character without losing coherence. It also had to position GM World! as a serious professional event, not just another Web3 hype vehicle.
+
+[process]
+The identity is built around a bold, modular typographic system that serves as the primary design vehicle. Rather than relying on a complex illustration or iconographic system that would need to be rethought for each city, the typography itself becomes the canvas for local adaptation, colour, texture, and photographic references from each host city can be layered into the letterforms without changing the structural identity.
+
+[outcome]
+The GM World! identity launched with the 2024 forum edition and was adopted across the full event brand: stage design, digital promotion, printed materials, and speaker assets. The modular system is flexible enough to extend to future editions without requiring a full redesign each year.
+
+[stats]
+2024 | Launch year
+Global | Event scope
+Web3 | Industry
+Metacampus | Client

@@ -1,0 +1,28 @@
+name: Hawkers
+subtitle: An interactive e-commerce concept for the Spanish eyewear brand, built in Protopie
+client: Self Project
+category: App UI/UX Redesign
+year: 2019
+role: Senior Designer
+deliverables: UX Design, Interactive Prototype, E-Commerce Design
+tags: App Design, Prototyping, E-Commerce
+aspect_ratio: 3/4
+order: 9
+
+[overview]
+Hawkers built its brand around personality and social media, a digital-native eyewear brand with a strong point of view. This self-initiated prototype reimagines its e-commerce experience to feel as distinctive as the brand itself: playful, visual, and unapologetically product-focused. The entire concept was built and prototyped in Protopie.
+
+[challenge]
+Hawkers has an expressive brand identity that its digital retail experience doesn't fully reflect. The design challenge was to create an e-commerce concept with the same energy as its marketing, bold, fast, image-led, without sacrificing the clarity and conversion efficiency that retail design requires.
+
+[process]
+Built entirely in Protopie, the prototype explores a visually rich shopping interface that puts the product front and centre. Navigation, product pages, and checkout flow were redesigned to create a more immersive, brand-consistent experience that feels like a natural extension of how Hawkers communicates on social media.
+
+[outcome]
+A complete interactive prototype demonstrating an alternative e-commerce direction for Hawkers. Published on Protopie for interactive viewing and shared within the design community.
+
+[stats]
+Protopie | Tool
+2019 | Year
+Brand-led | Approach
+Self | Initiated

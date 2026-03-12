@@ -1,0 +1,28 @@
+name: Netflix App
+subtitle: A self-initiated redesign exploring new interactions within Netflix's brand system
+client: Self Project
+category: App UI/UX Redesign
+year: 2019
+role: Senior Designer
+deliverables: UI/UX Design, Interactive Prototype, Interaction Design
+tags: App Design, Prototyping, Self Project
+aspect_ratio: 4/3
+order: 7
+
+[overview]
+This was a self-initiated project, a personal exploration of what a redesigned Netflix app might look and feel like. The goal wasn't to replace Netflix's existing design (which is excellent) but to use the constraints of an established brand system as a creative brief: what new interactions are possible within these rules? What features would make the experience meaningfully better?
+
+[challenge]
+Redesigning a product used by hundreds of millions of people means working under the weight of established habit. Any change has to feel like an improvement, not a departure, users should feel 'that's exactly what I wanted' rather than 'this is different.' The additional constraint of staying strictly within Netflix's brand guidelines meant the innovation had to come from interaction and information architecture, not visual novelty.
+
+[process]
+I built the entire prototype in Protopie, a high-fidelity interactive tool that allows for complex conditional logic, physics-based interactions, and realistic micro-animations. The two centrepiece features: a 'seen movies' carousel that reorganises content based on viewing history (making re-watches easier to find) and a reimagined main menu that reduces decision fatigue by surfacing personalised editorial collections.
+
+[outcome]
+The prototype was fully interactive and shareable, published on Protopie for anyone to try. It demonstrated that significant usability improvements are achievable within Netflix's existing design language, and generated significant engagement when shared in design communities.
+
+[stats]
+Protopie | Prototype tool
+2019 | Year
+100% | Brand compliant
+Self | Initiated

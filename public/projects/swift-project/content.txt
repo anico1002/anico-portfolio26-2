@@ -1,0 +1,28 @@
+name: SwifT Translator
+subtitle: A macOS menu bar translator that stays out of your way
+client: Personal project
+category: macOS App & Landing Page
+year: 2026
+role: Designer & Developer
+deliverables: macOS App Design, Landing Page, App Icon, Brand Identity
+tags: App Design
+aspect_ratio: 3/4
+order: 1
+
+[overview]
+SwifT Translator started as a personal frustration: translating text on macOS meant switching apps, opening browser tabs, copying and pasting. Every existing solution broke the flow. So I built one that didn't. SwifT Translator lives in the menu bar, requires no setup, no account, and no API keys, you select text in any application, press a shortcut, and get the translation as a native macOS notification. The design covers the full product surface: the macOS app UI, the app icon, and the marketing landing page.
+
+[challenge]
+The product challenge was radical simplicity. Most translation tools are feature-rich to justify their existence, SwifT Translator had to justify its existence through absence of features. Every design decision was a subtraction: no preferences panel, no history view, no onboarding flow. The interface had to disappear. For the landing page, the challenge was communicating a product so simple that the entire value proposition fits in one sentence, without the page feeling empty or underdesigned.
+
+[process]
+The macOS app was built as an NSStatusItem (menu bar only, no Dock icon) using SwifT Translator and AppKit. The translation engine uses a three-tier fallback chain: Apple's on-device Translation framework (macOS 26+, fully private), Google Translate (no API key required), and MyMemory as a final fallback. The landing page was designed to mirror the product's philosophy, clean, fast, opinionated typography, a single CTA. The icon uses a sharp geometric 'S' mark that reads at 16px in the menu bar and at 512px in the App Store grid.
+
+[outcome]
+SwifT Translator is free, ships as a universal binary (arm64 + x86_64), and installs in under 30 seconds via a signed .pkg. The landing page converts visitors with a single 'Download Free' CTA and zero signup friction. 14 languages supported at launch, with the architecture designed to add more without UI changes.
+
+[stats]
+1 | Shortcut to translate
+~4 MB | App size
+14 | Languages at launch
+Free | Forever
