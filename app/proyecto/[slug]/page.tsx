@@ -2,13 +2,18 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
-import { getEnrichedProjects } from "@/lib/scan-project";
+import { getEnrichedProjects, discoverProjectSlugs } from "@/lib/scan-project";
+import { projects } from "@/lib/projects";
 import ProyectoDetail from "@/components/ProyectoDetail";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
-/** Contenido textual desde content.txt; sin caché para que los cambios se vean al actualizar el archivo */
-export const dynamic = "force-dynamic";
+export function generateStaticParams() {
+  const hardcoded = projects.map((p) => p.slug);
+  const discovered = discoverProjectSlugs();
+  const all = Array.from(new Set([...hardcoded, ...discovered]));
+  return all.map((slug) => ({ slug }));
+}
 
 type Props = { params: Promise<{ slug: string }> };
 
