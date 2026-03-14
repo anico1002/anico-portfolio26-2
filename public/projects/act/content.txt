@@ -2,7 +2,7 @@ name: Athlete Career Training
 subtitle: Empowering elite athletes to bridge the gap between professional sports and the corporate world.
 client: Metacampus
 category: Brand Identity & Web
-year: 2025
+year: 2024
 role: Senior Designer
 deliverables: Brand Identity, Visual System, Corporate Assets, Digital Templates
 tags: Branding, Web, Art Direction

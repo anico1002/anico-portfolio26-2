@@ -1,9 +1,10 @@
 name: OBLIQ
 subtitle: A premium visual identity and digital home for high-end film production.
+client: Obliq Productions
 category: Brand Identity & Web
 year: 2025
 role: Senior Designer
-deliverables: Brand Identity, Visual System, Corporate Assets, Digital Templates
+deliverables: Brand Identity, Corporate Web
 tags: Branding, Web, Art Direction
 
 [overview]

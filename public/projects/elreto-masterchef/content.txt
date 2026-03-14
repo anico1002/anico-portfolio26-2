@@ -1,0 +1,30 @@
+name: El Reto MasterChef
+subtitle: A competitive digital ecosystem bringing the MasterChef experience to mobile devices.
+client: MasterChef World
+category: Brand Identity & UI/UX App
+year: 2025
+role: Senior Designer
+deliverables: Brand Identity, UI/UX App
+tags: Branding, Web, Art Direction, App Design, Prototiping
+
+[overview]
+El Reto is the interactive extension of MasterChef World, designed to turn viewers into active participants. My role involved the full product development: from creating the logo and brand book to designing the mobile application’s interface. The project aims to gamify professional cooking through an aspirational digital environment, where the visual identity acts as a bridge between the show’s culinary rigor and the agility of modern content platforms.
+
+[button]
+Launch Prototype https://cloud.protopie.io/p/bc6dc1340ee379915a5c03f6?ui=false&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23141414&bgImage=undefined&playSpeed=1
+
+[challenge]
+The main challenge was balancing a "premium culinary competition" aesthetic with a gaming visual language, avoiding an overly technical look. I had to create a "digital-first" visual system that thrived on high contrast and dynamism for small screens. Regarding UX, the difficulty lay in structuring a clear hierarchy for high information density: real-time rankings, video galleries, and progression systems, ensuring the atmosphere felt competitive yet sophisticated.
+
+[process]
+The identity was built on a vibrant palette (MCW Orange and gradients) paired with bold typography like Unbounded. I introduced the "Background Glows" concept to provide a premium gaming atmosphere and movement to the interface. For the app, I designed key components such as cards with subtle blur borders, circular progress indicators, and custom linear iconography to reinforce the technological focus. The design system allows for full scalability, adapting from micro-interactions within the app to on-screen broadcast graphics for television.
+
+[outcome]
+The result is a cohesive brand identity and a robust digital product launched for the 2026 season. The app facilitates a fluid user experience where user-generated content and gaming mechanics coexist organically. With a visual architecture optimized for interactivity, El Reto sets the standard for television format gamification, achieving seamless integration between the TV screen and the mobile device.
+
+[stats]
++9K App users
+230K Total users
+5M Followers
+40K 1st Event Audience
+
