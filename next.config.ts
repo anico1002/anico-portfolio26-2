@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  outputFileTracingExcludes: {
+    "*": [
+      "./public/projects/**/*",
+      "./public/hero-imgs/**/*",
+    ],
+  },
 };
 
 export default nextConfig;
