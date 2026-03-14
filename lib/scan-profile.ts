@@ -80,7 +80,7 @@ export function getProfileConfig(): ProfileConfig {
   return {
     careerStart,
     yoe,
-    email: kv.email ?? "hola@anico.es",
+    email: kv.email ?? "anico.es@gmail.com",
     linkedin: kv.linkedin ?? "https://es.linkedin.com/in/anico",
     meta: {
       title: t(meta.title ?? "anico | Senior Designer"),

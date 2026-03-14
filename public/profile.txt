@@ -5,7 +5,7 @@
 # ─────────────────────────────────────────────
 
 career_start: 1998
-email: hola@anico.es
+email: anico.es@gmail.com
 linkedin: https://es.linkedin.com/in/anico
 
 [meta]
