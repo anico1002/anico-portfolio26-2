@@ -346,7 +346,7 @@ export default function ProjectContent({ project, next }: ProjectContentProps) {
             {locale === "es" ? "¿Trabajamos juntos?" : "Want to work together?"}
           </h2>
           <a
-            href="mailto:hola@anico.es"
+            href="mailto:anico.es@gmail.com"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#0a0a0a] text-white font-medium text-sm hover:bg-[#404040] transition-colors duration-200"
           >
             {locale === "es" ? "Hablemos" : "Get in touch"}
