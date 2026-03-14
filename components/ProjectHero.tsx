@@ -9,11 +9,12 @@ interface ProjectHeroProps {
   alt: string;
   category: string;
   title: string;
+  videoSrc?: string;
 }
 
 const isLocalPath = (s: string) => s.startsWith("/");
 
-export default function ProjectHero({ src, alt, category, title }: ProjectHeroProps) {
+export default function ProjectHero({ src, alt, category, title, videoSrc }: ProjectHeroProps) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -26,26 +27,35 @@ export default function ProjectHero({ src, alt, category, title }: ProjectHeroPr
 
   return (
     <section ref={ref} className="relative h-screen overflow-hidden bg-muted">
-      {src && (
+      {(videoSrc || src) && (
         <motion.div
           className="absolute inset-0"
           style={{ y: imageY }}
         >
-          {isLocalPath(src) ? (
+          {videoSrc ? (
+            <video
+              src={videoSrc}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : isLocalPath(src!) ? (
             <img
-              src={src}
+              src={src!}
               alt={alt}
               className="absolute inset-0 w-full h-full object-cover"
               fetchPriority="high"
             />
           ) : (
             <Image
-              src={src}
+              src={src!}
               alt={alt}
               fill
               className="object-cover"
               priority
-              unoptimized={src.endsWith(".gif")}
+              unoptimized={src!.endsWith(".gif")}
               sizes="100vw"
             />
           )}

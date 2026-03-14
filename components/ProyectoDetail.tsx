@@ -102,6 +102,7 @@ export default function ProyectoDetail({ project, prev, next }: ProyectoDetailPr
         alt={p.name}
         category={p.category}
         title={p.name}
+        videoSrc={project.heroVideo}
       />
 
       <div className="relative bg-white z-10">
