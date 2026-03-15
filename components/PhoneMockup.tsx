@@ -4,8 +4,8 @@ interface PhoneMockupProps {
   mediaUrl: string;
   isVideo: boolean;
   bgUrl?: string;
-  phoneColor?: "black" | "white";
-  phoneModel?: "iphone8" | "iphone16";
+  phoneColor?: "black" | "white" | "starlight";
+  phoneModel?: "iphone8" | "iphone14";
   palette?: number;
 }
 
@@ -18,14 +18,15 @@ const PALETTE_GRADIENTS: Record<number, string> = {
 };
 
 /*
- * CSS verbatim from https://github.com/marvelapp/devices.css (MIT)
- * iPhone 8 + custom iPhone 16 rules included.
- * Scaling via --ps CSS variable on .ph-wrap / .ph-wrap.iphone16-model.
+ * iPhone 8 CSS verbatim from https://github.com/marvelapp/devices.css (MIT)
+ * iPhone 14 CSS verbatim from https://github.com/picturepan2/devices.css (MIT)
+ *
+ * Scaling via --ps CSS variable on .ph-wrap / .ph-wrap.iphone14-model.
  * .ph-scaler applies transform: scale(var(--ps)) to the natural-size device.
  * .ph-wrap reserves the correct layout space at each breakpoint.
  *
  * iPhone 8  natural size: 423 × 877px  (375+48 × 667+210, content-box)
- * iPhone 16 natural size: 417 × 942px  (393+24 × 852+90,  content-box)
+ * iPhone 14 natural size: 428 × 868px  (border-box, screen = 390×830)
  */
 const DEVICE_CSS = `
   /* ── iPhone 8 scaling ── */
@@ -49,26 +50,26 @@ const DEVICE_CSS = `
     transform-origin: top left;
   }
 
-  /* ── iPhone 16 scaling ── */
-  .ph-wrap.iphone16-model {
-    --ps: 0.31;
-    width:  calc(417px * var(--ps));
-    height: calc(942px * var(--ps));
+  /* ── iPhone 14 scaling ── */
+  .ph-wrap.iphone14-model {
+    --ps: 0.33;
+    width:  calc(428px * var(--ps));
+    height: calc(868px * var(--ps));
   }
-  @media (min-width: 640px)  { .ph-wrap.iphone16-model { --ps: 0.40; } }
-  @media (min-width: 768px)  { .ph-wrap.iphone16-model { --ps: 0.48; } }
-  @media (min-width: 1024px) { .ph-wrap.iphone16-model { --ps: 0.59; } }
+  @media (min-width: 640px)  { .ph-wrap.iphone14-model { --ps: 0.43; } }
+  @media (min-width: 768px)  { .ph-wrap.iphone14-model { --ps: 0.52; } }
+  @media (min-width: 1024px) { .ph-wrap.iphone14-model { --ps: 0.63; } }
 
-  .ph-scaler.iphone16-model {
+  .ph-scaler.iphone14-model {
     position: absolute;
     top: 0; left: 0;
-    width: 417px;
-    height: 942px;
+    width: 428px;
+    height: 868px;
     transform: scale(var(--ps));
     transform-origin: top left;
   }
 
-  /* ── devices.css base ── */
+  /* ── devices.css (marvelapp) base ── */
   .marvel-device {
     display: inline-block;
     position: relative;
@@ -93,7 +94,7 @@ const DEVICE_CSS = `
     display: block;
   }
 
-  /* ── iPhone 8 (verbatim from devices.css) + outer shadow ── */
+  /* ── iPhone 8 (verbatim from marvelapp/devices.css) ── */
   .marvel-device.iphone8 {
     width: 375px;
     height: 667px;
@@ -109,9 +110,8 @@ const DEVICE_CSS = `
     width: calc(100% - 12px);
     height: calc(100% - 12px);
     position: absolute;
-    top: 6px;
+    top: 6px; left: 6px;
     content: '';
-    left: 6px;
     border-radius: 50px;
     background: #f8f8f8;
     z-index: 1;
@@ -120,242 +120,131 @@ const DEVICE_CSS = `
     width: calc(100% - 16px);
     height: calc(100% - 16px);
     position: absolute;
-    top: 8px;
+    top: 8px; left: 8px;
     content: '';
-    left: 8px;
     border-radius: 48px;
     box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.1), inset 0 0 6px 3px #fff;
     z-index: 2;
   }
   .marvel-device.iphone8 .home {
     border-radius: 100%;
-    width: 68px;
-    height: 68px;
+    width: 68px; height: 68px;
     position: absolute;
-    left: 50%;
-    margin-left: -34px;
-    bottom: 22px;
-    z-index: 3;
+    left: 50%; margin-left: -34px;
+    bottom: 22px; z-index: 3;
     background: linear-gradient(135deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
   }
   .marvel-device.iphone8 .home:before {
     background: #f8f8f8;
-    position: absolute;
-    content: '';
+    position: absolute; content: '';
     border-radius: 100%;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    top: 4px;
-    left: 4px;
+    width: calc(100% - 8px); height: calc(100% - 8px);
+    top: 4px; left: 4px;
   }
   .marvel-device.iphone8 .top-bar {
-    height: 14px;
-    background: #bfbfc0;
-    position: absolute;
-    top: 68px;
-    left: 0;
+    height: 14px; background: #bfbfc0;
+    position: absolute; top: 68px; left: 0;
   }
   .marvel-device.iphone8 .bottom-bar {
-    height: 14px;
-    background: #bfbfc0;
-    position: absolute;
-    bottom: 68px;
-    left: 0;
+    height: 14px; background: #bfbfc0;
+    position: absolute; bottom: 68px; left: 0;
   }
   .marvel-device.iphone8 .sleep {
-    position: absolute;
-    top: 190px;
-    right: -4px;
-    width: 4px;
-    height: 66px;
-    border-radius: 0px 2px 2px 0px;
-    background: #d9dbdc;
+    position: absolute; top: 190px; right: -4px;
+    width: 4px; height: 66px;
+    border-radius: 0px 2px 2px 0px; background: #d9dbdc;
   }
   .marvel-device.iphone8 .volume {
-    position: absolute;
-    left: -4px;
-    top: 188px;
-    z-index: 0;
-    height: 66px;
-    width: 4px;
-    border-radius: 2px 0px 0px 2px;
-    background: #d9dbdc;
+    position: absolute; left: -4px; top: 188px;
+    z-index: 0; height: 66px; width: 4px;
+    border-radius: 2px 0px 0px 2px; background: #d9dbdc;
   }
   .marvel-device.iphone8 .volume:before {
-    position: absolute;
-    left: 2px;
-    top: -78px;
-    height: 40px;
-    width: 2px;
-    border-radius: 2px 0px 0px 2px;
-    background: inherit;
-    content: '';
-    display: block;
+    position: absolute; left: 2px; top: -78px;
+    height: 40px; width: 2px;
+    border-radius: 2px 0px 0px 2px; background: inherit;
+    content: ''; display: block;
   }
   .marvel-device.iphone8 .volume:after {
-    position: absolute;
-    left: 0px;
-    top: 82px;
-    height: 66px;
-    width: 4px;
-    border-radius: 2px 0px 0px 2px;
-    background: inherit;
-    content: '';
-    display: block;
+    position: absolute; left: 0px; top: 82px;
+    height: 66px; width: 4px;
+    border-radius: 2px 0px 0px 2px; background: inherit;
+    content: ''; display: block;
   }
   .marvel-device.iphone8 .camera {
-    background: #3c3d3d;
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    top: 24px;
-    left: 50%;
-    margin-left: -6px;
-    border-radius: 100%;
-    z-index: 3;
+    background: #3c3d3d; width: 12px; height: 12px;
+    position: absolute; top: 24px; left: 50%; margin-left: -6px;
+    border-radius: 100%; z-index: 3;
   }
   .marvel-device.iphone8 .sensor {
-    background: #3c3d3d;
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    top: 49px;
-    left: 134px;
-    z-index: 3;
-    border-radius: 100%;
+    background: #3c3d3d; width: 16px; height: 16px;
+    position: absolute; top: 49px; left: 134px;
+    z-index: 3; border-radius: 100%;
   }
   .marvel-device.iphone8 .speaker {
-    background: #292728;
-    width: 70px;
-    height: 6px;
-    position: absolute;
-    top: 54px;
-    left: 50%;
-    margin-left: -35px;
-    border-radius: 6px;
-    z-index: 3;
+    background: #292728; width: 70px; height: 6px;
+    position: absolute; top: 54px; left: 50%; margin-left: -35px;
+    border-radius: 6px; z-index: 3;
   }
-
-  /* ── iPhone 8 black variant ── */
   .marvel-device.iphone8.black {
     background: #464646;
-    box-shadow:
-      inset 0 0 3px 0 rgba(0,0,0,0.7),
-      0 24px 60px rgba(0,0,0,0.48),
-      0  6px 18px rgba(0,0,0,0.32);
+    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.7), 0 24px 60px rgba(0,0,0,0.48), 0 6px 18px rgba(0,0,0,0.32);
   }
   .marvel-device.iphone8.black:before { background: #080808; }
-  .marvel-device.iphone8.black:after {
-    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.1), inset 0 0 6px 3px #212121;
-  }
+  .marvel-device.iphone8.black:after { box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.1), inset 0 0 6px 3px #212121; }
   .marvel-device.iphone8.black .top-bar,
   .marvel-device.iphone8.black .bottom-bar { background: #212121; }
   .marvel-device.iphone8.black .volume,
   .marvel-device.iphone8.black .sleep      { background: #464646; }
   .marvel-device.iphone8.black .camera     { background: #080808; }
-  .marvel-device.iphone8.black .home {
-    background: linear-gradient(135deg, #080808 0%, #464646 50%, #080808 100%);
-  }
+  .marvel-device.iphone8.black .home { background: linear-gradient(135deg, #080808 0%, #464646 50%, #080808 100%); }
   .marvel-device.iphone8.black .home:before { background: #080808; }
   .marvel-device.iphone8.black .screen { box-shadow: 0 0 0 2px #3c3d3d; }
 
-  /* ── iPhone 16 ── */
-  .marvel-device.iphone16 {
-    width: 393px;
-    height: 852px;
-    padding: 55px 12px 35px 12px;
-    background: #1c1c1e;
-    border-radius: 50px;
-    box-shadow:
-      inset 0 0 3px 0 rgba(0,0,0,0.7),
-      0 24px 60px rgba(0,0,0,0.48),
-      0  6px 18px rgba(0,0,0,0.32);
+  /* ── picturepan2/devices.css base (MIT) ── */
+  .device, .device *, .device ::after, .device ::before, .device::after, .device::before {
+    box-sizing: border-box;
+    display: block;
   }
-  .marvel-device.iphone16:before {
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    position: absolute;
-    top: 4px; left: 4px;
-    content: '';
-    border-radius: 47px;
-    background: #111113;
-    z-index: 1;
-  }
-  .marvel-device.iphone16:after {
-    width: calc(100% - 16px);
-    height: calc(100% - 16px);
-    position: absolute;
-    top: 8px; left: 8px;
-    content: '';
-    border-radius: 43px;
-    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.1), inset 0 0 6px 3px #1a1a1c;
-    z-index: 2;
-  }
-  .marvel-device.iphone16 .screen {
-    border-radius: 40px;
-    box-shadow: 0 0 0 2px #2a2a2c;
-  }
-  /* Dynamic Island */
-  .marvel-device.iphone16 .dynamic-island {
-    width: 126px;
-    height: 37px;
-    background: #000;
-    border-radius: 20px;
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    margin-left: -63px;
-    z-index: 4;
-  }
-  /* Power button (right) */
-  .marvel-device.iphone16 .sleep {
-    position: absolute;
-    top: 200px; right: -4px;
-    width: 4px; height: 80px;
-    border-radius: 0 2px 2px 0;
-    background: #2a2a2c;
-  }
-  /* Volume buttons (left) */
-  .marvel-device.iphone16 .volume {
-    position: absolute;
-    left: -4px; top: 200px;
-    width: 4px; height: 55px;
-    border-radius: 2px 0 0 2px;
-    background: #2a2a2c;
-  }
-  .marvel-device.iphone16 .volume:before {
-    position: absolute;
-    left: 0; top: 70px;
-    height: 55px; width: 4px;
-    border-radius: 2px 0 0 2px;
-    background: inherit;
-    content: ''; display: block;
-  }
-  /* Action button (left, above volume) */
-  .marvel-device.iphone16 .action {
-    position: absolute;
-    left: -4px; top: 145px;
-    width: 4px; height: 32px;
-    border-radius: 2px 0 0 2px;
-    background: #2a2a2c;
+  .device { position: relative; transform: scale(1); z-index: 1; }
+  .device .device-frame { z-index: 1; }
+  .device .device-screen {
+    background-color: #000;
+    background-position: center center;
+    background-size: cover;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* ── iPhone 16 white variant ── */
-  .marvel-device.iphone16.white {
-    background: #e8e8ed;
-    box-shadow:
-      inset 0 0 3px 0 rgba(0,0,0,0.15),
-      0 24px 60px rgba(0,0,0,0.22),
-      0  6px 18px rgba(0,0,0,0.14);
-  }
-  .marvel-device.iphone16.white:before { background: #f5f5f7; }
-  .marvel-device.iphone16.white:after {
-    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.05), inset 0 0 6px 3px #fff;
-  }
-  .marvel-device.iphone16.white .sleep,
-  .marvel-device.iphone16.white .volume,
-  .marvel-device.iphone16.white .action { background: #c8c8cc; }
-  .marvel-device.iphone16.white .screen { box-shadow: 0 0 0 2px #bfbfc0; }
+  /* ── iPhone 14 (verbatim from picturepan2/devices.css) ── */
+  .device-iphone-14 { height: 868px; width: 428px; }
+  .device-iphone-14 .device-frame { background: #010101; border: 1px solid #101315; border-radius: 68px; box-shadow: inset 0 0 4px 2px #b0b8c0, inset 0 0 0 6px #272c31; height: 868px; padding: 19px; width: 428px; }
+  .device-iphone-14 .device-screen { border-radius: 49px; height: 830px; width: 390px; }
+  .device-iphone-14 .device-stripe::after, .device-iphone-14 .device-stripe::before { border: solid rgba(1,1,1,.25); border-width: 0 7px; content: ""; height: 7px; left: 0; position: absolute; width: 100%; z-index: 9; }
+  .device-iphone-14 .device-stripe::after  { top: 85px; }
+  .device-iphone-14 .device-stripe::before { bottom: 85px; }
+  .device-iphone-14 .device-header { background: #010101; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; height: 30px; left: 50%; margin-left: -80px; position: absolute; top: 20px; width: 160px; }
+  .device-iphone-14 .device-header::after, .device-iphone-14 .device-header::before { content: ""; height: 10px; position: absolute; top: 0; width: 10px; }
+  .device-iphone-14 .device-header::after  { background: radial-gradient(circle at bottom left,  transparent 0, transparent 75%, #010101 75%, #010101 100%); left: -10px; }
+  .device-iphone-14 .device-header::before { background: radial-gradient(circle at bottom right, transparent 0, transparent 75%, #010101 75%, #010101 100%); right: -10px; }
+  .device-iphone-14 .device-sensors::after, .device-iphone-14 .device-sensors::before { content: ""; position: absolute; }
+  .device-iphone-14 .device-sensors::after  { background: #151515; border: 1px solid #010101; border-radius: 4px; box-shadow: 0 0 4px #151515; height: 7px; left: 50%; margin-left: -35px; top: 8px; width: 70px; }
+  .device-iphone-14 .device-sensors::before { background: radial-gradient(farthest-corner at 20% 20%, #6074bf 0, transparent 40%), radial-gradient(farthest-corner at 80% 80%, #513785 0, #24555e 20%, transparent 50%); border-radius: 50%; box-shadow: 0 0 1px 1px rgba(255,255,255,.05); height: 9px; left: 50%; margin-left: -60px; top: 26px; width: 9px; }
+  .device-iphone-14 .device-btns { background: #101315; border-radius: 2px; height: 32px; left: -2px; position: absolute; top: 115px; width: 3px; }
+  .device-iphone-14 .device-btns::after, .device-iphone-14 .device-btns::before { background: #101315; border-radius: 2px; content: ""; height: 62px; left: 0; position: absolute; width: 3px; }
+  .device-iphone-14 .device-btns::after  { top: 60px; }
+  .device-iphone-14 .device-btns::before { top: 140px; }
+  .device-iphone-14 .device-power { background: #101315; border-radius: 2px; height: 100px; position: absolute; right: -2px; top: 200px; width: 3px; }
+  .device-iphone-14 .device-home::after, .device-iphone-14 .device-home::before { border: solid rgba(1,1,1,.25); border-width: 6px 0; content: ""; height: 6px; position: absolute; width: 6px; z-index: 9; }
+  .device-iphone-14 .device-home::after  { right: 86px; top: 0; }
+  .device-iphone-14 .device-home::before { bottom: 0; left: 86px; }
+  /* Starlight (silver/white) variant */
+  .device-iphone-14.device-starlight .device-frame { border-color: #bdb4aa; box-shadow: inset 0 0 4px 2px #fff, inset 0 0 0 6px #d3cdc7; }
+  .device-iphone-14.device-starlight .device-btns,
+  .device-iphone-14.device-starlight .device-btns::after,
+  .device-iphone-14.device-starlight .device-btns::before { background: #bdb4aa; }
+  .device-iphone-14.device-starlight .device-power { background: #bdb4aa; }
 `;
 
 export default function PhoneMockup({
@@ -367,29 +256,25 @@ export default function PhoneMockup({
   palette = 1,
 }: PhoneMockupProps) {
   const gradient = PALETTE_GRADIENTS[palette] ?? PALETTE_GRADIENTS[1];
-  const is16 = phoneModel === "iphone16";
+  const is14 = phoneModel === "iphone14";
 
-  // iphone8: "black" class for dark variant; iphone16: no class = dark, "white" for light
-  const colorClass = is16
-    ? (phoneColor === "white" ? "white" : "")
+  // iphone8: "black" class for dark; iphone14: no class = black, "device-starlight" for silver/white
+  const colorClass = is14
+    ? (phoneColor === "starlight" || phoneColor === "white" ? "device-starlight" : "")
     : (phoneColor === "black" ? "black" : "");
 
-  const mediaContent = (
-    <div className="screen">
-      {isVideo ? (
-        <video
-          src={mediaUrl}
-          autoPlay muted loop playsInline
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      ) : (
-        <img
-          src={mediaUrl}
-          alt=""
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      )}
-    </div>
+  const mediaContent = isVideo ? (
+    <video
+      src={mediaUrl}
+      autoPlay muted loop playsInline
+      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+    />
+  ) : (
+    <img
+      src={mediaUrl}
+      alt=""
+      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+    />
   );
 
   return (
@@ -399,32 +284,31 @@ export default function PhoneMockup({
       {/* aspect-[12/5] = 1920:800 — bg shows fully without crop, scales with container width */}
       <div className="max-w-6xl mx-auto relative aspect-[12/5]">
 
-        {/* Background — fills the aspect-ratio box exactly */}
+        {/* Background */}
         {bgUrl ? (
-          <img
-            src={bgUrl}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <img src={bgUrl} alt="" aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover" />
         ) : (
           <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
         )}
 
         {/* Phone — centered, bleeds above and below the bg box */}
-        <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{ zIndex: 1 }}
-        >
-          {is16 ? (
-            <div className={`ph-wrap iphone16-model`}>
-              <div className={`ph-scaler iphone16-model`}>
-                <div className={`marvel-device iphone16${colorClass ? ` ${colorClass}` : ""}`}>
-                  <div className="dynamic-island" />
-                  <div className="sleep" />
-                  <div className="volume" />
-                  <div className="action" />
-                  {mediaContent}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ zIndex: 1 }}>
+          {is14 ? (
+            <div className="ph-wrap iphone14-model">
+              <div className="ph-scaler iphone14-model">
+                <div className={`device device-iphone-14${colorClass ? ` ${colorClass}` : ""}`}>
+                  <div className="device-frame">
+                    <div className="device-screen">
+                      {mediaContent}
+                    </div>
+                  </div>
+                  <div className="device-stripe" />
+                  <div className="device-header" />
+                  <div className="device-sensors" />
+                  <div className="device-btns" />
+                  <div className="device-power" />
+                  <div className="device-home" />
                 </div>
               </div>
             </div>
@@ -438,7 +322,7 @@ export default function PhoneMockup({
                   <div className="camera" />
                   <div className="sensor" />
                   <div className="speaker" />
-                  {mediaContent}
+                  <div className="screen">{mediaContent}</div>
                   <div className="home" />
                   <div className="bottom-bar" />
                 </div>

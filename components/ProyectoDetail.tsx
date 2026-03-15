@@ -226,7 +226,7 @@ export default function ProyectoDetail({ project, prev, next }: ProyectoDetailPr
               isVideo={block.isVideo}
               bgUrl={block.bgUrl}
               phoneColor={block.phoneColor as "black" | "white"}
-              phoneModel={block.phoneModel as "iphone8" | "iphone16"}
+              phoneModel={block.phoneModel as "iphone8" | "iphone14"}
               palette={project.palette}
             />
           ))}
