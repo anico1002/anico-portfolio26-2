@@ -218,9 +218,10 @@ export default function ProyectoDetail({ project, prev, next }: ProyectoDetailPr
 
         {/* Imágenes por sección: una sola columna, full width, altura natural, sin huecos */}
         {contentBlocks.filter(b => b.type !== "mockup").length > 0 && (() => {
+          const hasMockup = contentBlocks.some(b => b.type === "mockup");
           const groups = groupBlocksBySection(contentBlocks.filter(b => b.type !== "mockup") as Exclude<ContentBlock, { type: "mockup" }>[]);
           return (
-            <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32 overflow-x-hidden">
+            <section className={`px-6 md:px-12 lg:px-24 pt-24 md:pt-32 ${hasMockup ? "pb-0" : "pb-24 md:pb-32"} overflow-x-hidden`}>
               {groups.map((group, sectionIndex) => (
                 <div key={sectionIndex} className="max-w-6xl mx-auto">
                   {group.title && (

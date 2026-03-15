@@ -1,0 +1,28 @@
+name: Two Dots
+subtitle: A UI/UX reimagining focused on artistic curation and scalable engagement.
+client: Self Project
+category: Game UI/UX Redesign
+year: 2024
+role: Senior UI/UX Designer
+deliverables: UI/UX Design, Interactive Prototype, Interaction Design
+tags: Game UI/UX, Prototyping
+phonecolor: white
+phoneratio: 393/852
+phonemodel: iphone14
+
+[overview]
+Two Dots is a masterpiece of minimalism, but even the best classics need an interface that matches modern mobile standards. My redesign focuses on two pillars: radical UI simplification and the introduction of the Artist Series. By transforming the game’s background into a curated gallery for global illustrators, the game stops being just a puzzle and becomes a platform for discovery. This system turns the map and the gameplay into a dynamic canvas, increasing the product’s shareability and opening new doors for strategic partnerships with the creative community.
+
+[button]
+Live Prototype https://cloud.protopie.io/p/0b09f246536c3e16169f4fba?ui=false&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%231c1c1c&bgImage=undefined&playSpeed=1
+
+[challenge]
+The main challenge was to modernize a legacy UI without losing the "zen" essence that defines Two Dots. I had to solve the visual clutter of the original map and create a seamless transition between the level selection and the gameplay. From a product perspective, the goal was to find a reason for players to return beyond the mechanics: emotional connection through art. The interface needed to be invisible enough to let the guest artist's work shine, yet intuitive enough to improve the overall player flow.
+
+[process]
+The redesign began by stripping back the UI to its core components, using a more contemporary, rounded design language that feels tactile and responsive. For the Artist Series, I developed a dynamic background system where the illustrator’s work persists from the map into the active level, creating a unified visual experience. I also implemented a new set of micro-interactions: haptic-aligned animations and subtle transitions that provide instant feedback, making every "dot connection" feel more satisfying and physically grounded.
+
+[outcome]
+The result is a more premium, editorial version of Two Dots. The implementation of the Artist Series serves as a powerful organic marketing tool, as featured artists share their work with their own audiences, driving high-quality traffic to the game. The updated UI reduces cognitive load and increases session length through improved ergonomics. It’s no longer just a game; it’s a scalable ecosystem where art drives retention and brand value.
+
+[stats]

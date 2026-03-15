@@ -219,7 +219,7 @@ const DEVICE_CSS = `
 
   /* ── iPhone 14 (verbatim from picturepan2/devices.css) ── */
   .device-iphone-14 { height: 868px; width: 428px; }
-  .device-iphone-14 .device-frame { background: #010101; border: 1px solid #101315; border-radius: 68px; box-shadow: inset 0 0 4px 2px #b0b8c0, inset 0 0 0 6px #272c31; height: 868px; padding: 19px; width: 428px; }
+  .device-iphone-14 .device-frame { background: #010101; border: 1px solid #101315; border-radius: 68px; box-shadow: inset 0 0 4px 2px #b0b8c0, inset 0 0 0 6px #272c31, 0 24px 60px rgba(0,0,0,0.22), 0 6px 18px rgba(0,0,0,0.14); height: 868px; padding: 19px; width: 428px; }
   .device-iphone-14 .device-screen { border-radius: 49px; height: 830px; width: 390px; }
   .device-iphone-14 .device-stripe::after, .device-iphone-14 .device-stripe::before { border: solid rgba(1,1,1,.25); border-width: 0 7px; content: ""; height: 7px; left: 0; position: absolute; width: 100%; z-index: 9; }
   .device-iphone-14 .device-stripe::after  { top: 85px; }
