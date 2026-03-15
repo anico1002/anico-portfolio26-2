@@ -64,11 +64,24 @@ $FFMPEG -framerate 25 -i /tmp/fr/%04d.png -vcodec libx264 -crf 22 -preset slow \
 | Hero carousel | Add/remove files in `public/hero-imgs/` |
 | Disable a project | Add slug to `DISABLED_PROJECT_SLUGS` in `lib/scan-project.ts` |
 
-**content.txt metadata keys:** `name`, `subtitle`, `client`, `category`, `year`, `role`, `deliverables`, `tags`, `phonecolor` (black|white), `phoneratio` (e.g. 9/16)
+**content.txt metadata keys:** `name`, `subtitle`, `client`, `category`, `year`, `role`, `deliverables`, `tags`, `phonecolor` (black|white|starlight), `phoneratio` (e.g. 9/16 or 393/852), `phonemodel` (iphone8|iphone14 — default: iphone8)
 
 **content.txt blocks:** `[overview]`, `[challenge]`, `[process]`, `[outcome]`, `[stats]` (one line = one stat box), `[links]` (Label | URL), `[button]` (Label https://...)
 
-**Phone mockup** (`components/PhoneMockup.tsx`): renders an iPhone 8 CSS frame around a video or image. The frame uses `box-sizing: content-box` so its true size is **423×877px** (375+48 × 667+210). `ph-scaler` applies CSS `scale()` via `--ps` variable; `ph-wrap` reserves exact layout space. Background uses `aspect-[12/5]` (1920:800) so a 1920×800px bg image shows without cropping; the phone bleeds above/below via `py-32` on the wrapper. Screen stroke: `#bfbfc0` for white phones, `#3c3d3d` for black (`.iphone8.black .screen` override).
+**Phone mockup** (`components/PhoneMockup.tsx`): renders a CSS phone frame around a video or image. Two models supported:
+- **iPhone 8** (default): natural size 423×877px (content-box), CSS from marvelapp/devices.css. Screen stroke `#bfbfc0` white / `#3c3d3d` black.
+- **iPhone 14**: natural size 428×868px (border-box, screen 390×830), CSS from picturepan2/devices.css. `white`/`starlight` → `.device-starlight` class; black = no extra class.
+
+Both use `.ph-scaler` + `.ph-wrap` with `--ps` CSS variable for responsive scaling (0.33→0.63). Background uses `aspect-[12/5]` (1920×800) so bg image shows without cropping.
+
+**HEVC/H.265 → H.264 for phone video** (source files are often iPhone screen recordings):
+```bash
+FFMPEG=/Users/anico/.npm-global/lib/node_modules/ffmpeg-static/ffmpeg
+$FFMPEG -i input_src.mp4 -vcodec libx264 -crf 26 -preset slow \
+  -vf "scale=392:-2" -r 30 -pix_fmt yuv420p -an -movflags +faststart -y output_phone.mp4
+```
+- 392px width (even number, matches iPhone 14 ratio 393×852)
+- Remove source file after conversion — never commit `*_src.mp4` files
 
 ## UI conventions
 
