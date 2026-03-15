@@ -5,6 +5,7 @@ interface PhoneMockupProps {
   isVideo: boolean;
   bgUrl?: string;
   phoneColor?: "black" | "white";
+  phoneModel?: "iphone8" | "iphone16";
   palette?: number;
 }
 
@@ -18,11 +19,16 @@ const PALETTE_GRADIENTS: Record<number, string> = {
 
 /*
  * CSS verbatim from https://github.com/marvelapp/devices.css (MIT)
- * Only iPhone 8 rules included. Scaling via --ps CSS variable on .ph-wrap.
+ * iPhone 8 + custom iPhone 16 rules included.
+ * Scaling via --ps CSS variable on .ph-wrap / .ph-wrap.iphone16-model.
  * .ph-scaler applies transform: scale(var(--ps)) to the natural-size device.
  * .ph-wrap reserves the correct layout space at each breakpoint.
+ *
+ * iPhone 8  natural size: 423 × 877px  (375+48 × 667+210, content-box)
+ * iPhone 16 natural size: 417 × 942px  (393+24 × 852+90,  content-box)
  */
 const DEVICE_CSS = `
+  /* ── iPhone 8 scaling ── */
   .ph-wrap {
     --ps: 0.33;
     display: inline-block;
@@ -39,6 +45,25 @@ const DEVICE_CSS = `
     top: 0; left: 0;
     width: 423px;
     height: 877px;
+    transform: scale(var(--ps));
+    transform-origin: top left;
+  }
+
+  /* ── iPhone 16 scaling ── */
+  .ph-wrap.iphone16-model {
+    --ps: 0.31;
+    width:  calc(417px * var(--ps));
+    height: calc(942px * var(--ps));
+  }
+  @media (min-width: 640px)  { .ph-wrap.iphone16-model { --ps: 0.40; } }
+  @media (min-width: 768px)  { .ph-wrap.iphone16-model { --ps: 0.48; } }
+  @media (min-width: 1024px) { .ph-wrap.iphone16-model { --ps: 0.59; } }
+
+  .ph-scaler.iphone16-model {
+    position: absolute;
+    top: 0; left: 0;
+    width: 417px;
+    height: 942px;
     transform: scale(var(--ps));
     transform-origin: top left;
   }
@@ -211,7 +236,7 @@ const DEVICE_CSS = `
     z-index: 3;
   }
 
-  /* ── Black variant (verbatim) ── */
+  /* ── iPhone 8 black variant ── */
   .marvel-device.iphone8.black {
     background: #464646;
     box-shadow:
@@ -233,6 +258,104 @@ const DEVICE_CSS = `
   }
   .marvel-device.iphone8.black .home:before { background: #080808; }
   .marvel-device.iphone8.black .screen { box-shadow: 0 0 0 2px #3c3d3d; }
+
+  /* ── iPhone 16 ── */
+  .marvel-device.iphone16 {
+    width: 393px;
+    height: 852px;
+    padding: 55px 12px 35px 12px;
+    background: #1c1c1e;
+    border-radius: 50px;
+    box-shadow:
+      inset 0 0 3px 0 rgba(0,0,0,0.7),
+      0 24px 60px rgba(0,0,0,0.48),
+      0  6px 18px rgba(0,0,0,0.32);
+  }
+  .marvel-device.iphone16:before {
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    position: absolute;
+    top: 4px; left: 4px;
+    content: '';
+    border-radius: 47px;
+    background: #111113;
+    z-index: 1;
+  }
+  .marvel-device.iphone16:after {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    position: absolute;
+    top: 8px; left: 8px;
+    content: '';
+    border-radius: 43px;
+    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.1), inset 0 0 6px 3px #1a1a1c;
+    z-index: 2;
+  }
+  .marvel-device.iphone16 .screen {
+    border-radius: 40px;
+    box-shadow: 0 0 0 2px #2a2a2c;
+  }
+  /* Dynamic Island */
+  .marvel-device.iphone16 .dynamic-island {
+    width: 126px;
+    height: 37px;
+    background: #000;
+    border-radius: 20px;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    margin-left: -63px;
+    z-index: 4;
+  }
+  /* Power button (right) */
+  .marvel-device.iphone16 .sleep {
+    position: absolute;
+    top: 200px; right: -4px;
+    width: 4px; height: 80px;
+    border-radius: 0 2px 2px 0;
+    background: #2a2a2c;
+  }
+  /* Volume buttons (left) */
+  .marvel-device.iphone16 .volume {
+    position: absolute;
+    left: -4px; top: 200px;
+    width: 4px; height: 55px;
+    border-radius: 2px 0 0 2px;
+    background: #2a2a2c;
+  }
+  .marvel-device.iphone16 .volume:before {
+    position: absolute;
+    left: 0; top: 70px;
+    height: 55px; width: 4px;
+    border-radius: 2px 0 0 2px;
+    background: inherit;
+    content: ''; display: block;
+  }
+  /* Action button (left, above volume) */
+  .marvel-device.iphone16 .action {
+    position: absolute;
+    left: -4px; top: 145px;
+    width: 4px; height: 32px;
+    border-radius: 2px 0 0 2px;
+    background: #2a2a2c;
+  }
+
+  /* ── iPhone 16 white variant ── */
+  .marvel-device.iphone16.white {
+    background: #e8e8ed;
+    box-shadow:
+      inset 0 0 3px 0 rgba(0,0,0,0.15),
+      0 24px 60px rgba(0,0,0,0.22),
+      0  6px 18px rgba(0,0,0,0.14);
+  }
+  .marvel-device.iphone16.white:before { background: #f5f5f7; }
+  .marvel-device.iphone16.white:after {
+    box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.05), inset 0 0 6px 3px #fff;
+  }
+  .marvel-device.iphone16.white .sleep,
+  .marvel-device.iphone16.white .volume,
+  .marvel-device.iphone16.white .action { background: #c8c8cc; }
+  .marvel-device.iphone16.white .screen { box-shadow: 0 0 0 2px #bfbfc0; }
 `;
 
 export default function PhoneMockup({
@@ -240,10 +363,34 @@ export default function PhoneMockup({
   isVideo,
   bgUrl,
   phoneColor = "black",
+  phoneModel = "iphone8",
   palette = 1,
 }: PhoneMockupProps) {
   const gradient = PALETTE_GRADIENTS[palette] ?? PALETTE_GRADIENTS[1];
-  const colorClass = phoneColor === "black" ? "black" : "";
+  const is16 = phoneModel === "iphone16";
+
+  // iphone8: "black" class for dark variant; iphone16: no class = dark, "white" for light
+  const colorClass = is16
+    ? (phoneColor === "white" ? "white" : "")
+    : (phoneColor === "black" ? "black" : "");
+
+  const mediaContent = (
+    <div className="screen">
+      {isVideo ? (
+        <video
+          src={mediaUrl}
+          autoPlay muted loop playsInline
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      ) : (
+        <img
+          src={mediaUrl}
+          alt=""
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      )}
+    </div>
+  );
 
   return (
     <div className="px-6 md:px-12 lg:px-24 py-32">
@@ -269,35 +416,35 @@ export default function PhoneMockup({
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           style={{ zIndex: 1 }}
         >
-          <div className="ph-wrap">
-            <div className="ph-scaler">
-              <div className={`marvel-device iphone8${colorClass ? ` ${colorClass}` : ""}`}>
-                <div className="top-bar" />
-                <div className="sleep" />
-                <div className="volume" />
-                <div className="camera" />
-                <div className="sensor" />
-                <div className="speaker" />
-                <div className="screen">
-                  {isVideo ? (
-                    <video
-                      src={mediaUrl}
-                      autoPlay muted loop playsInline
-                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-                  ) : (
-                    <img
-                      src={mediaUrl}
-                      alt=""
-                      style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-                  )}
+          {is16 ? (
+            <div className={`ph-wrap iphone16-model`}>
+              <div className={`ph-scaler iphone16-model`}>
+                <div className={`marvel-device iphone16${colorClass ? ` ${colorClass}` : ""}`}>
+                  <div className="dynamic-island" />
+                  <div className="sleep" />
+                  <div className="volume" />
+                  <div className="action" />
+                  {mediaContent}
                 </div>
-                <div className="home" />
-                <div className="bottom-bar" />
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="ph-wrap">
+              <div className="ph-scaler">
+                <div className={`marvel-device iphone8${colorClass ? ` ${colorClass}` : ""}`}>
+                  <div className="top-bar" />
+                  <div className="sleep" />
+                  <div className="volume" />
+                  <div className="camera" />
+                  <div className="sensor" />
+                  <div className="speaker" />
+                  {mediaContent}
+                  <div className="home" />
+                  <div className="bottom-bar" />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
       </div>

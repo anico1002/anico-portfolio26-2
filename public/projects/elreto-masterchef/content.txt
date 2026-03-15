@@ -1,4 +1,7 @@
 name: El Reto MasterChef
+phonecolor: black
+phoneratio: 393/852
+phonemodel: iphone16
 subtitle: A competitive digital ecosystem bringing the MasterChef experience to mobile devices.
 client: MasterChef World
 category: Brand Identity & UI/UX App

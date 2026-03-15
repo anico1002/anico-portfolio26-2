@@ -30,7 +30,7 @@ export interface ScannedProject {
   /** CTA button from [button] in content.txt (download / visit web) */
   ctaButton?: ContentButton;
   /** Phone mockup block detected from *_phone.* file */
-  phoneMockup?: { mediaUrl: string; isVideo: boolean; bgUrl?: string; phoneRatio: string; phoneColor: string };
+  phoneMockup?: { mediaUrl: string; isVideo: boolean; bgUrl?: string; phoneRatio: string; phoneColor: string; phoneModel: string };
   /** Parsed key:value metadata from content.txt */
   meta: ContentMeta;
   /** Default-locale text blocks from content.txt */
@@ -185,12 +185,14 @@ export function getScannedProject(slug: string): ScannedProject | null {
 
   const phoneRatio = parsed?.meta?.phoneratio ?? "9/16";
   const phoneColor = parsed?.meta?.phonecolor ?? "black";
+  const phoneModel = parsed?.meta?.phonemodel ?? "iphone8";
   const phoneMockup = phoneMediaFile ? {
     mediaUrl: `${urlBase}/${phoneMediaFile}`,
     isVideo: VIDEO_EXTS.test(phoneMediaFile),
     bgUrl: phoneBgFile ? `${urlBase}/${phoneBgFile}` : undefined,
     phoneRatio,
     phoneColor,
+    phoneModel,
   } : undefined;
 
   return {

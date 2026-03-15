@@ -30,8 +30,27 @@ After build/content changes: delete `.next/` and restart the server to pick up c
    - `*_thumb.(png|jpg|…)` → thumbnail
    - `NN_Section-Name/` subfolders → visual sections with titles
    - Image groups: `1.png` = single image; `1a.png + 1b.png` = fade slideshow
+   - `*_hero.(mp4|webm|mov)` → project hero **video** (preferred over static image — renders as `<video autoPlay loop muted playsInline>`, no pixelation)
+   - `*_phone.(mp4|jpg|png|…)` → media inside the CSS phone frame
+   - `*_phone_bg.(png|jpg|…)` → background image behind the phone mockup
 
 `lib/scan-project.ts` → `getEnrichedProjects()` merges both sources and auto-discovers new folders. Project pages use `dynamic = "force-dynamic"` so content.txt changes are visible on reload.
+
+**GIF/WebP → MP4 conversion** (no ImageMagick; ffmpeg via npm global):
+```bash
+FFMPEG=/Users/anico/.npm-global/lib/node_modules/ffmpeg-static/ffmpeg
+# Animated GIF or static input → MP4
+$FFMPEG -i input.gif -vcodec libx264 -crf 22 -preset slow \
+  -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -pix_fmt yuv420p -an -movflags +faststart -y out.mp4
+# Animated WebP (ffmpeg can't decode ANIM chunks directly — extract frames first):
+python3 -c "
+from PIL import Image; import os
+img=Image.open('in.webp'); os.makedirs('/tmp/fr',exist_ok=True)
+[img.seek(i) or img.convert('RGBA').save(f'/tmp/fr/{i:04d}.png') for i in range(img.n_frames)]
+"
+$FFMPEG -framerate 25 -i /tmp/fr/%04d.png -vcodec libx264 -crf 22 -preset slow \
+  -pix_fmt yuv420p -an -movflags +faststart -y out.mp4
+```
 
 **Hero carousel:** `public/hero-imgs/` — files sorted alphabetically, support images (jpg/png/gif/webp/avif) and videos (mp4/webm/mov). Videos render as `<video autoPlay loop muted playsInline>`.
 
@@ -45,7 +64,11 @@ After build/content changes: delete `.next/` and restart the server to pick up c
 | Hero carousel | Add/remove files in `public/hero-imgs/` |
 | Disable a project | Add slug to `DISABLED_PROJECT_SLUGS` in `lib/scan-project.ts` |
 
+**content.txt metadata keys:** `name`, `subtitle`, `client`, `category`, `year`, `role`, `deliverables`, `tags`, `phonecolor` (black|white), `phoneratio` (e.g. 9/16)
+
 **content.txt blocks:** `[overview]`, `[challenge]`, `[process]`, `[outcome]`, `[stats]` (one line = one stat box), `[links]` (Label | URL), `[button]` (Label https://...)
+
+**Phone mockup** (`components/PhoneMockup.tsx`): renders an iPhone 8 CSS frame around a video or image. The frame uses `box-sizing: content-box` so its true size is **423×877px** (375+48 × 667+210). `ph-scaler` applies CSS `scale()` via `--ps` variable; `ph-wrap` reserves exact layout space. Background uses `aspect-[12/5]` (1920:800) so a 1920×800px bg image shows without cropping; the phone bleeds above/below via `py-32` on the wrapper. Screen stroke: `#bfbfc0` for white phones, `#3c3d3d` for black (`.iphone8.black .screen` override).
 
 ## UI conventions
 

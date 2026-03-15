@@ -36,7 +36,7 @@ export type ContentBlock =
   | { sectionTitle?: string; type: "image"; urls: [string] }
   | { sectionTitle?: string; type: "slideshow"; urls: string[] }
   | { sectionTitle?: string; type: "video"; url: string }
-  | { sectionTitle?: string; type: "mockup"; mediaUrl: string; isVideo: boolean; bgUrl?: string; phoneRatio: string; phoneColor: string };
+  | { sectionTitle?: string; type: "mockup"; mediaUrl: string; isVideo: boolean; bgUrl?: string; phoneRatio: string; phoneColor: string; phoneModel: string };
 
 /** Bloques de contenido por sección: imagen única o slideshow (1a,1b,1c). */
 function getProjectContentBlocks(project: Project): ContentBlock[] {
@@ -226,6 +226,7 @@ export default function ProyectoDetail({ project, prev, next }: ProyectoDetailPr
               isVideo={block.isVideo}
               bgUrl={block.bgUrl}
               phoneColor={block.phoneColor as "black" | "white"}
+              phoneModel={block.phoneModel as "iphone8" | "iphone16"}
               palette={project.palette}
             />
           ))}

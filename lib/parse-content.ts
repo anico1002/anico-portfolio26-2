@@ -34,6 +34,8 @@ export interface ContentMeta {
   phoneratio?: string;
   /** Phone frame color: "black" (default) or "white". Key must be lowercase in content.txt: phonecolor */
   phonecolor?: string;
+  /** Phone model: "iphone8" (default) or "iphone16". Key must be lowercase in content.txt: phonemodel */
+  phonemodel?: string;
 }
 
 export interface ContentLink {
