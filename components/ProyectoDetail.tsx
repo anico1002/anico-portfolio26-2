@@ -216,21 +216,6 @@ export default function ProyectoDetail({ project, prev, next }: ProyectoDetailPr
           </section>
         )}
 
-        {/* Phone mockup block — full-width, outside max-w container */}
-        {contentBlocks
-          .filter((b): b is Extract<ContentBlock, { type: "mockup" }> => b.type === "mockup")
-          .map((block, i) => (
-            <PhoneMockup
-              key={i}
-              mediaUrl={block.mediaUrl}
-              isVideo={block.isVideo}
-              bgUrl={block.bgUrl}
-              phoneColor={block.phoneColor as "black" | "white"}
-              phoneModel={block.phoneModel as "iphone8" | "iphone14"}
-              palette={project.palette}
-            />
-          ))}
-
         {/* Imágenes por sección: una sola columna, full width, altura natural, sin huecos */}
         {contentBlocks.filter(b => b.type !== "mockup").length > 0 && (() => {
           const groups = groupBlocksBySection(contentBlocks.filter(b => b.type !== "mockup") as Exclude<ContentBlock, { type: "mockup" }>[]);
@@ -281,6 +266,21 @@ export default function ProyectoDetail({ project, prev, next }: ProyectoDetailPr
             </section>
           );
         })()}
+
+        {/* Phone mockup block — full-width, after all section images */}
+        {contentBlocks
+          .filter((b): b is Extract<ContentBlock, { type: "mockup" }> => b.type === "mockup")
+          .map((block, i) => (
+            <PhoneMockup
+              key={i}
+              mediaUrl={block.mediaUrl}
+              isVideo={block.isVideo}
+              bgUrl={block.bgUrl}
+              phoneColor={block.phoneColor as "black" | "white"}
+              phoneModel={block.phoneModel as "iphone8" | "iphone14"}
+              palette={project.palette}
+            />
+          ))}
 
         {/* Outcomes / Project impact — solo si hay contenido en content.txt */}
         {p.stats && p.stats.length > 0 && (
