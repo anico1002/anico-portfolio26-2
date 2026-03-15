@@ -1,7 +1,4 @@
 name: El Reto MasterChef
-phonecolor: black
-phoneratio: 393/852
-phonemodel: iphone14
 subtitle: A competitive digital ecosystem bringing the MasterChef experience to mobile devices.
 client: MasterChef World
 category: Brand Identity & UI/UX App
@@ -9,6 +6,9 @@ year: 2025
 role: Senior Designer
 deliverables: Brand Identity, UI/UX App
 tags: Branding, Web, Art Direction, App Design, Prototiping
+phonecolor: black
+phoneratio: 393/852
+phonemodel: iphone14
 
 [overview]
 El Reto is the interactive extension of MasterChef World, designed to turn viewers into active participants. My role involved the full product development: from creating the logo and brand book to designing the mobile application’s interface. The project aims to gamify professional cooking through an aspirational digital environment, where the visual identity acts as a bridge between the show’s culinary rigor and the agility of modern content platforms.
